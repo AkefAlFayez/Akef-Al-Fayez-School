@@ -1,6 +1,5 @@
-
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 
 // Custom Ministry of Education Style Logo Component
 const MoeLogo = ({ className }: { className?: string }) => (
@@ -28,6 +27,30 @@ const MoeLogo = ({ className }: { className?: string }) => (
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    // Check system preference or saved preference
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove('dark');
+      setIsDark(false);
+    }
+  }, []);
+
+  const toggleDarkMode = () => {
+    if (isDark) {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+      setIsDark(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+      setIsDark(true);
+    }
+  };
 
   const navLinks = [
     { title: 'الرئيسية', href: '#home' },
@@ -55,7 +78,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 shadow-lg bg-white/95 backdrop-blur-md border-b border-gray-100">
+    <nav className="sticky top-0 z-50 shadow-lg bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           
@@ -65,9 +88,9 @@ export const Navbar: React.FC = () => {
                 <MoeLogo className="w-16 h-16" />
              </div>
              <div className="flex flex-col">
-                <span className="text-xs text-gray-500 font-bold tracking-wide mb-0.5">وزارة التربية والتعليم</span>
-                <span className="text-xl md:text-2xl font-black text-[#0A3E91] tracking-tight leading-none">مدرسة عاكف الفايز</span>
-                <span className="text-[10px] text-[#E0B043] font-bold mt-1">الأساسية للبنين - الشميساني</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 font-bold tracking-wide mb-0.5">وزارة التربية والتعليم</span>
+                <span className="text-xl md:text-2xl font-black text-[#0A3E91] dark:text-blue-400 tracking-tight leading-none">مدرسة عاكف الفايز</span>
+                <span className="text-[10px] text-[#E0B043] font-bold mt-1">الثانوية للبنين - الشميساني</span>
              </div>
           </div>
 
@@ -79,15 +102,25 @@ export const Navbar: React.FC = () => {
                   key={link.title}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-gray-600 hover:text-[#0A3E91] px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 hover:bg-blue-50 relative group"
+                  className="text-gray-600 dark:text-gray-300 hover:text-[#0A3E91] dark:hover:text-[#1E90FF] px-4 py-2 rounded-lg text-sm font-bold transition-all duration-300 hover:bg-blue-50 dark:hover:bg-gray-800 relative group"
                 >
                   {link.title}
                   <span className="absolute bottom-0 right-0 w-0 h-0.5 bg-[#E0B043] transition-all duration-300 group-hover:w-full"></span>
                 </a>
               ))}
-              <div className="pr-4 border-r border-gray-200 mr-4 h-8 flex items-center">
+              
+              {/* Dark Mode Toggle */}
+              <button 
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors mx-2"
+                aria-label="Toggle Dark Mode"
+              >
+                {isDark ? <Sun size={20} className="text-[#E0B043]" /> : <Moon size={20} />}
+              </button>
+
+              <div className="pr-4 border-r border-gray-200 dark:border-gray-700 mr-4 h-8 flex items-center">
                 <a 
-                    href="https://darsak.gov.jo/" 
+                    href="https://ajyal.moe.gov.jo/emis/Login.aspx" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-[#0A3E91] text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-[#082a63] transition-all hover:shadow-lg hover:-translate-y-0.5"
@@ -98,11 +131,17 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="-mr-2 flex md:hidden">
+          {/* Mobile Menu Button & Toggle */}
+          <div className="-mr-2 flex items-center md:hidden gap-2">
+            <button 
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+                {isDark ? <Sun size={24} className="text-[#E0B043]" /> : <Moon size={24} />}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-[#0A3E91] hover:text-[#1E90FF] p-2 rounded-md focus:outline-none transition-colors"
+              className="text-[#0A3E91] dark:text-[#1E90FF] hover:text-[#1E90FF] p-2 rounded-md focus:outline-none transition-colors"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -112,20 +151,20 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl z-50">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 absolute w-full shadow-xl z-50">
           <div className="px-4 pt-2 pb-6 space-y-2 text-right">
             {navLinks.map((link) => (
               <a
                 key={link.title}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-gray-700 hover:text-[#0A3E91] hover:bg-blue-50 block px-4 py-3 rounded-xl text-base font-bold transition-all"
+                className="text-gray-700 dark:text-gray-200 hover:text-[#0A3E91] hover:bg-blue-50 dark:hover:bg-gray-800 block px-4 py-3 rounded-xl text-base font-bold transition-all"
               >
                 {link.title}
               </a>
             ))}
             <a 
-                href="https://darsak.gov.jo/"
+                href="https://ajyal.moe.gov.jo/emis/Login.aspx"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}

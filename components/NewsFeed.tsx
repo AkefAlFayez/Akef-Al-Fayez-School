@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { NEWS_DATA } from '../constants';
 import { Calendar, ChevronLeft, ChevronRight, ArrowLeft, Trophy, BookOpen, Mic, AlertCircle, Users, Star, Activity, FileText } from 'lucide-react';
@@ -53,30 +52,30 @@ const getCardHeader = (item: NewsItem) => {
 
 // Skeleton Loader Component
 const SkeletonCard = () => (
-  <div className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 h-full flex flex-col animate-pulse">
+  <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm border border-gray-100 dark:border-gray-700 h-full flex flex-col animate-pulse">
     {/* Header Skeleton */}
-    <div className="h-28 bg-gray-200 relative"></div>
+    <div className="h-28 bg-gray-200 dark:bg-gray-700 relative"></div>
     
     {/* Content Skeleton */}
     <div className="p-6 flex flex-col flex-1">
       {/* Date */}
-      <div className="w-24 h-4 bg-gray-200 rounded mb-4"></div>
+      <div className="w-24 h-4 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
       
       {/* Title */}
-      <div className="w-3/4 h-6 bg-gray-300 rounded mb-2"></div>
-      <div className="w-1/2 h-6 bg-gray-300 rounded mb-4"></div>
+      <div className="w-3/4 h-6 bg-gray-300 dark:bg-gray-600 rounded mb-2"></div>
+      <div className="w-1/2 h-6 bg-gray-300 dark:bg-gray-600 rounded mb-4"></div>
       
       {/* Body */}
       <div className="space-y-2 mb-6 flex-1">
-        <div className="w-full h-3 bg-gray-100 rounded"></div>
-        <div className="w-full h-3 bg-gray-100 rounded"></div>
-        <div className="w-2/3 h-3 bg-gray-100 rounded"></div>
+        <div className="w-full h-3 bg-gray-100 dark:bg-gray-700 rounded"></div>
+        <div className="w-full h-3 bg-gray-100 dark:bg-gray-700 rounded"></div>
+        <div className="w-2/3 h-3 bg-gray-100 dark:bg-gray-700 rounded"></div>
       </div>
       
       {/* Footer */}
       <div className="mt-auto flex justify-between items-center">
-        <div className="w-16 h-4 bg-gray-200 rounded"></div>
-        <div className="w-20 h-4 bg-gray-200 rounded"></div>
+        <div className="w-16 h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
+        <div className="w-20 h-4 bg-gray-200 dark:bg-gray-700 rounded"></div>
       </div>
     </div>
   </div>
@@ -137,24 +136,24 @@ export const NewsFeed: React.FC = () => {
   };
 
   return (
-    <div className="py-24 bg-gray-50 select-none overflow-hidden border-t border-gray-100">
+    <div className="py-24 bg-gray-50 dark:bg-gray-900 select-none overflow-hidden border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-200 pb-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-200 dark:border-gray-700 pb-6">
           <div className="text-right w-full md:w-auto">
             <div className="flex items-center gap-2 mb-2 justify-end md:justify-start">
-                <span className="text-sm font-bold text-gray-500">المركز الإعلامي</span>
+                <span className="text-sm font-bold text-gray-500 dark:text-gray-400">المركز الإعلامي</span>
                 <FileText className="text-[#E0B043]" size={24} />
             </div>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0A3E91] text-right">الأنشطة والأخبار</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-[#0A3E91] dark:text-blue-400 text-right">الأنشطة والأخبار</h2>
           </div>
           
           <div className="hidden md:flex gap-3 items-center mt-4 md:mt-0">
             <button 
               onClick={prevSlide} 
               disabled={isLoading}
-              className={`w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-all ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:text-[#0A3E91] hover:border-[#0A3E91]'}`} 
+              className={`w-12 h-12 flex items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 text-gray-400 dark:text-gray-500 transition-all ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:text-[#0A3E91] dark:hover:text-[#1E90FF] hover:border-[#0A3E91] dark:hover:border-[#1E90FF]'}`} 
               aria-label="Previous"
             >
               <ChevronRight size={20} />
@@ -192,32 +191,32 @@ export const NewsFeed: React.FC = () => {
                   <div key={item.id} className="px-4 shrink-0 transition-all duration-300" style={{ width: `${100 / itemsToShow}%` }}>
                     
                     {/* Card */}
-                    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group h-full flex flex-col hover:-translate-y-2">
+                    <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group h-full flex flex-col hover:-translate-y-2">
                       
                       {/* Visual Header (No Images) */}
                       {getCardHeader(item)}
 
                       {/* Content */}
                       <div className="p-6 flex flex-col flex-1">
-                        <div className="flex items-center justify-between text-xs text-gray-400 mb-4 border-b border-gray-50 pb-4">
-                           <div className="flex items-center gap-1 bg-gray-50 px-2 py-1 rounded">
+                        <div className="flex items-center justify-between text-xs text-gray-400 dark:text-gray-500 mb-4 border-b border-gray-50 dark:border-gray-700 pb-4">
+                           <div className="flex items-center gap-1 bg-gray-50 dark:bg-gray-700/50 px-2 py-1 rounded">
                                <Calendar size={12} />
                                <span>{item.date}</span>
                            </div>
                         </div>
 
-                        <h3 className="text-lg font-bold text-gray-800 mb-3 group-hover:text-[#0A3E91] transition-colors leading-relaxed line-clamp-2">
+                        <h3 className="text-lg font-bold text-gray-800 dark:text-gray-100 mb-3 group-hover:text-[#0A3E91] dark:group-hover:text-[#1E90FF] transition-colors leading-relaxed line-clamp-2">
                           {item.title}
                         </h3>
                         
-                        <p className="text-gray-500 text-sm line-clamp-3 mb-6 leading-7 flex-1">
+                        <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-3 mb-6 leading-7 flex-1">
                           {item.content}
                         </p>
 
                         <div className="mt-auto flex items-center justify-between pt-2">
                            <div className="flex flex-wrap gap-1">
                                {item.tags?.slice(0, 1).map((tag, i) => (
-                                   <span key={i} className="text-[10px] text-[#0A3E91] bg-blue-50 px-2 py-1 rounded font-medium">{tag}</span>
+                                   <span key={i} className="text-[10px] text-[#0A3E91] dark:text-blue-300 bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded font-medium">{tag}</span>
                                ))}
                            </div>
                            <a 
@@ -246,7 +245,7 @@ export const NewsFeed: React.FC = () => {
               {Array.from({ length: Math.min(5, totalItems) }).map((_, idx) => (
                   <div 
                       key={idx} 
-                      className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex % 5 ? 'w-8 bg-[#0A3E91]' : 'w-2 bg-gray-300'}`}
+                      className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex % 5 ? 'w-8 bg-[#0A3E91]' : 'w-2 bg-gray-300 dark:bg-gray-600'}`}
                   ></div>
               ))}
           </div>

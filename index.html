@@ -1,68 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>مدرسة عاكف الفايز الأساسية للبنين</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="theme-color" content="#0A3E91" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111827" media="(prefers-color-scheme: dark)" />
+    <meta name="description" content="الموقع الرسمي لمدرسة عاكف الفايز الثانوية للبنين - بيئة تعليمية قيادية متطورة" />
+    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%230A3E91"/><path d="M16 6 L4 12 L16 18 L28 12 Z" fill="%23E0B043"/><path d="M28 12 V22" stroke="%23E0B043" stroke-width="1.5"/><path d="M8 14 V20 C8 20 12 24 16 24 C20 24 24 20 24 20 V14" fill="none" stroke="%23E0B043" stroke-width="1.5"/></svg>' type="image/svg+xml" />
+    <title>مدرسة عاكف الفايز الثانوية للبنين</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 100px;
-      }
-      body {
-        font-family: 'Cairo', sans-serif;
-        background-color: #f8fafc;
-      }
-      /* Custom Animations */
-      @keyframes shake-gentle {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-3px) rotate(-2deg); }
-        75% { transform: translateX(3px) rotate(2deg); }
-      }
-      .hover-shake:hover {
-        animation: shake-gentle 0.4s ease-in-out;
-      }
-      
-      @keyframes float {
-        0% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0px); }
-      }
-      .animate-float {
-        animation: float 3s ease-in-out infinite;
-      }
-
-      .slide-up {
-        animation: slideUp 0.8s ease-out forwards;
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      @keyframes slideUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Cairo', 'sans-serif'],
+            },
+            colors: {
+              gray: {
+                900: '#111827',
+                800: '#1f2937',
+                700: '#374151',
+              }
+            }
+          }
         }
       }
-
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #0A3E91;
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #1E90FF;
-      }
-    </style>
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css" />
   <script type="importmap">
 {
   "imports": {
@@ -76,5 +43,6 @@
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>

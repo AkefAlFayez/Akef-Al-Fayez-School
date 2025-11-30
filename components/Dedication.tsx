@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { Heart, Code } from 'lucide-react';
 
 export const Dedication: React.FC = () => {
   return (
-    <div className="bg-gradient-to-br from-[#0A3E91] to-[#06265c] py-16 text-white relative overflow-hidden">
+    <div className="bg-gradient-to-br from-[#0A3E91] to-[#06265c] dark:from-gray-900 dark:to-black py-16 text-white relative overflow-hidden transition-colors duration-300">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#E0B043 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
       <div className="absolute top-0 right-0 w-64 h-64 bg-[#E0B043] rounded-full filter blur-[100px] opacity-10 animate-float"></div>

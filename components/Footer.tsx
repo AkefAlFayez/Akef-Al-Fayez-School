@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Facebook, Instagram } from 'lucide-react';
 
@@ -14,7 +13,7 @@ const MoeLogoSmall = ({ className }: { className?: string }) => (
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-16 pb-8 border-t-4 border-[#E0B043]">
+    <footer className="bg-gray-900 dark:bg-black text-gray-300 pt-16 pb-8 border-t-4 border-[#E0B043] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -69,7 +68,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs opacity-60">
-          <p>© {new Date().getFullYear()} جميع الحقوق محفوظة لمدرسة عاكف الفايز الأساسية للبنين.</p>
+          <p>© {new Date().getFullYear()} جميع الحقوق محفوظة لمدرسة عاكف الفايز الثانوية للبنين.</p>
           <p className="mt-2 md:mt-0 flex items-center gap-1">
              <span>تصميم وتطوير:</span>
              <span className="text-[#E0B043] font-bold">وليد مصطفى</span>
