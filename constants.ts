@@ -1,3 +1,6 @@
+
+import { NewsItem, ScheduleItem } from './types';
+
 export const COLORS = {
   royalBlue: '#0A3E91',
   lightBlue: '#1E90FF',
@@ -5,7 +8,7 @@ export const COLORS = {
   gold: '#E0B043',
 };
 
-export const NEWS_DATA = [
+export const NEWS_DATA: NewsItem[] = [
   {
     id: 1,
     title: "زيارة مهنية: مدرسة عبد الحميد شرف",
@@ -108,7 +111,7 @@ export const NEWS_DATA = [
   }
 ];
 
-export const SCHEDULE_DATA = [
+export const SCHEDULE_DATA: ScheduleItem[] = [
   { period: "فتح أبواب المدرسة", time: "07:45", description: "استقبال الطلبة" },
   { period: "الطابور الصباحي", time: "08:15", description: "السلام الملكي - الفترة الصباحية" },
   { period: "الحصة الأولى (صباحي)", time: "08:30", description: "بداية الحصص الصباحية" },

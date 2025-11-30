@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { NEWS_DATA } from '../constants.js';
+import { NEWS_DATA } from '../constants';
 import { Calendar, ChevronLeft, ChevronRight, ArrowLeft, Trophy, BookOpen, Mic, AlertCircle, Users, Star, Activity, FileText } from 'lucide-react';
+import { NewsItem } from '../types';
 
 // Helper to get visual representation based on category/content
-const getCardHeader = (item) => {
+const getCardHeader = (item: NewsItem) => {
   let Icon = Activity;
   let bgClass = "bg-blue-600";
   
@@ -80,11 +81,11 @@ const SkeletonCard = () => (
   </div>
 );
 
-export const NewsFeed = () => {
+export const NewsFeed: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsToShow, setItemsToShow] = useState(3);
-  const [touchStart, setTouchStart] = useState(null);
-  const [touchEnd, setTouchEnd] = useState(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   // Simulate data fetching
@@ -123,8 +124,8 @@ export const NewsFeed = () => {
   };
 
   // Swipe Handlers
-  const handleTouchStart = (e) => setTouchStart(e.targetTouches[0].clientX);
-  const handleTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.targetTouches[0].clientX);
+  const handleTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;

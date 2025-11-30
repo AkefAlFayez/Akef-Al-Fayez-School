@@ -1,8 +1,8 @@
 import React from 'react';
-import { SCHEDULE_DATA } from '../constants.js';
+import { SCHEDULE_DATA } from '../constants';
 import { Clock } from 'lucide-react';
 
-export const Schedule = () => {
+export const Schedule: React.FC = () => {
   return (
     <div className="py-20 bg-[#f0f4f8] dark:bg-gray-800 relative overflow-hidden transition-colors duration-300">
         {/* Background Pattern */}

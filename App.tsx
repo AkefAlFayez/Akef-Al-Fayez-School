@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar.js';
-import { Hero } from './components/Hero.js';
-import { About } from './components/About.js';
-import { NewsFeed } from './components/NewsFeed.js';
-import { Schedule } from './components/Schedule.js';
-import { Contact } from './components/Contact.js';
-import { Dedication } from './components/Dedication.js';
-import { Footer } from './components/Footer.js';
+import { Navbar } from './components/Navbar';
+import { Hero } from './components/Hero';
+import { About } from './components/About';
+import { NewsFeed } from './components/NewsFeed';
+import { Schedule } from './components/Schedule';
+import { Contact } from './components/Contact';
+import { Dedication } from './components/Dedication';
+import { Footer } from './components/Footer';
 import { ArrowUp } from 'lucide-react';
 
-const App = () => {
+const App: React.FC = () => {
   const [showScrollBtn, setShowScrollBtn] = useState(false);
 
   useEffect(() => {
