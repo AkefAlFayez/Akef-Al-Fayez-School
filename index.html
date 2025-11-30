@@ -8,6 +8,8 @@
     <meta name="description" content="الموقع الرسمي لمدرسة عاكف الفايز الثانوية للبنين - بيئة تعليمية قيادية متطورة" />
     <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="%230A3E91"/><path d="M16 6 L4 12 L16 18 L28 12 Z" fill="%23E0B043"/><path d="M28 12 V22" stroke="%23E0B043" stroke-width="1.5"/><path d="M8 14 V20 C8 20 12 24 16 24 C20 24 24 20 24 20 V14" fill="none" stroke="%23E0B043" stroke-width="1.5"/></svg>' type="image/svg+xml" />
     <title>مدرسة عاكف الفايز الثانوية للبنين</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -28,23 +30,29 @@
         }
       }
     </script>
+    
+    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
-    <!-- Babel Standalone for in-browser JSX compilation -->
+    
+    <!-- Babel Standalone -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script type="importmap">
+    
+    <!-- Import Map for Browser Modules -->
+    <script type="importmap">
 {
   "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+    "react": "https://esm.sh/react@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
   }
 }
 </script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
+    <!-- Entry Point -->
     <script type="text/babel" data-type="module" src="./index.js"></script>
   </body>
 </html>
